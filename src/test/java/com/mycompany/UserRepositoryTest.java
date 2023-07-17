@@ -54,4 +54,21 @@ public class UserRepositoryTest {
         Assertions.assertThat(updatedUser.getPassword()).isEqualTo("2000");
 
     }
+    @Test
+    public void testGet(){
+        int userId=1;
+        Optional<User> optionalUser=repo.findById(userId);
+        Assertions.assertThat(optionalUser).isPresent();
+        System.out.println(optionalUser.get());
+
+
+    }
+    @Test
+    public void testDelete(){
+        int userid=1;
+        repo.deleteById(userid);
+        Optional<User> optionalUser=repo.findById(userid);
+        Assertions.assertThat(optionalUser).isNotPresent();
+
+    }
 }
